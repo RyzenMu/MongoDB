@@ -5,6 +5,27 @@ download mongodb Shell (mongosh) zip file
 extract it to the programs directory
 copy bin path and paste it to the environment-variables
 
+Connection Commands:
+in the compass press Connection
+db.getMongo();
+
+DB Formats:
+key-values
+Documents
+Columnar -- time
+Graph Formats
+
+DB Commands:
+show dbs
+use db1 -- creates new database with name db1
+show collections
+db.books.createOne({id:1, name:"silapathigaram", author:"tholkapiyar"});
+let msg = "Hello orld";
+printjson(msg);
+
+
+
+
 
 
 
