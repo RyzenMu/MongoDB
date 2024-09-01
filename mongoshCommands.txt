@@ -1,0 +1,11 @@
+Setting Up:
+download .msi MOngodb server - community edition
+installation setup -- choose network service & install compass along with it.
+download mongodb Shell (mongosh) zip file
+extract it to the programs directory
+copy bin path and paste it to the environment-variables
+
+
+
+
+
