@@ -22,6 +22,7 @@ show collections
 db.books.createOne({id:1, name:"silapathigaram", author:"tholkapiyar"});
 let msg = "Hello orld";
 printjson(msg);
+db -- gives the name of the current db
 
 
 
