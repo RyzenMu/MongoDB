@@ -5,6 +5,10 @@ download mongodb Shell (mongosh) zip file
 extract it to the programs directory
 copy bin path and paste it to the environment-variables
 
+features of mongobd:
+it does not null values because it is not-structured
+
+
 Connection Commands:
 in the compass press Connection
 db.getMongo();
@@ -23,6 +27,17 @@ db.books.createOne({id:1, name:"silapathigaram", author:"tholkapiyar"});
 let msg = "Hello orld";
 printjson(msg);
 db -- gives the name of the current db
+join == embedded Documents
+db.coll.createMany([{},{}, {}]);
+_id can be passsed to the object to get replaced by the dafaulkt id
+db.coll.find(name="max");
+db.coll.find(); -- lists all documents
+db.coll.insertOne() -- mongngo method
+db.coll.insertmany() -- mongodb method.
+db.coll.find().pretty()
+db.coll.find().limit(3);
+db.coll.find().limit(3).skip(3);
+
 
 
 
