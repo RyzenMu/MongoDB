@@ -37,6 +37,19 @@ db.coll.insertmany() -- mongodb method.
 db.coll.find().pretty()
 db.coll.find().limit(3);
 db.coll.find().limit(3).skip(3);
+db.coll.updateOne({_id:131}, {$set:{date:"01/09/2024"}})
+db.coll.updateOne({_id:156}, {$set:{releaseDate:"7-8-26"}}, {upsert:true}) -- if condition is not true it will insert it.
+db.coll.updateOne({}, {$set:{fruit:"orange"}}) -- updates the first document.
+db.coll.deleteOne({_id:126});
+db.coll.deleteMany({fruit:"pomo"});
+
+MongoDB Data Types
+printjson() === print()
+embedded document are nested documents
+db.coll.createIndex({"customer":1, "city":1}); -- creates a compounded index 
+compounded index reduces searching time.
+
+
 
 
 
