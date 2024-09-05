@@ -48,6 +48,27 @@ printjson() === print()
 embedded document are nested documents
 db.coll.createIndex({"customer":1, "city":1}); -- creates a compounded index 
 compounded index reduces searching time.
+3.46
+db.ordercollection.createIndex({"items_purchased.item":1}); -- Multi Key index
+db.ordercollection.find({
+  "items_purchased": {
+    $elemMatch: { "item": "bit" }
+  }
+});
+
+2d-sphere Index creation
+db.places.createIndex({location:"2dsphere"}) -- used in map kind of application uber, ola
+db.collection.find({
+    location: {
+        $near: {
+            $geometry: {
+                type: "Point",
+                coordinates: [longitude, latitude]  // Replace with actual coordinates
+            },
+            $maxDistance: 10000  // Optional: Maximum distance in meters (10 km in this case)
+        }
+    }
+}).limit(1);  // You can adjust the limit as needed to return more results
 
 
 
