@@ -70,6 +70,15 @@ db.collection.find({
     }
 }).limit(1);  // You can adjust the limit as needed to return more results
 
+text type index is mostly used for description
+db.collection.createIndex({"customername":"text"});
+
+sharding is creating index for hashing like passwords 
+
+db.collection.createIndex({"name":1},{unique:true});
+
+4.20
+
 
 
 
