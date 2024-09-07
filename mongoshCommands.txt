@@ -79,6 +79,28 @@ db.collection.createIndex({"name":1},{unique:true});
 
 4.20
 
+partialFilterExpression
+db.collection.createIndex({"city":1}, {partialFilterExpression:{city : "patna"}})
+
+partialFilterExpression with name
+db.collection.createIndex({city:1}, {partialFilterExpresion:{city:"patna"}, name: "city-index-patna"});
+
+username should be unique in the database.
+
+sparse- index with name
+db.collection.createIndex({username:1}, {sparse:true, name:username-sparsed});
+
+TTL-Index -- (Total time to leave) -- deleting one by one 
+db.collection.createIndex({"expiryDate:1"}, {expiryAfterSeconds: 100});
+
+LIST oF INDEXES
+db.collection.getIndexes();
+
+DELETE INDEXES
+db.collection.dropnIndex("indexName");
+
+
+
 
 
 
