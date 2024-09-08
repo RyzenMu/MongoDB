@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= data ? 'Edit User' : 'Create User' %></title>
+</head>
+<body>
+    <h1><%= data ? 'Edit User' : 'Create User' %></h1>
+    <form action="<%= data ? '/update/' + data._id : '/create' %>" method="post">
+        <label for="">Name:</label>
+        <input type="text" name="name" value="<%= data ? data.name : '' %>">
+        <br><br>
+        <label for="">Email:</label>
+        <input type="text" name="email" value="<%= data ? data.email : '' %>">
+        <br><br>
+        <input type="submit" value="<%= data ? 'Update' : 'Create' %>">
+    </form>
+</body>
+</html>

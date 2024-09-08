@@ -90,7 +90,7 @@ username should be unique in the database.
 sparse- index with name
 db.collection.createIndex({username:1}, {sparse:true, name:username-sparsed});
 
-TTL-Index -- (Total time to leave) -- deleting one by one 
+TTL-Index -- (Total time to live) -- deleting one by one 
 db.collection.createIndex({"expiryDate:1"}, {expiryAfterSeconds: 100});
 
 LIST oF INDEXES
@@ -98,6 +98,113 @@ db.collection.getIndexes();
 
 DELETE INDEXES
 db.collection.dropnIndex("indexName");
+
+Aggregation:
+aggregation are those operations in mongoDb that examiones the data sets, perform calculations on them and return the calculated results.
+
+db.collection.aggregate([{$match:{city:"cityname"}}]);
+
+Combining Aggregate:
+db.collection.aggregate([{$match:{city:"Combsstad"}}, {$count:"Total-Combsstad"}]);
+
+Aggregate with project:
+db.collection.aggregate([{$match:{city:"Combsstad"}}, {$project:{customername:0}}]);
+
+$out() -- creating new collection out of existing collection
+db.collection.aggregate([{$match:{city:"Combsstad"}}, {$out:{db:"customer", coll:"collectionname"}}]);
+
+$limit() -- limits the result.
+$skip() -- skips the result.
+
+$group:
+db.collection.aggregate(
+  [
+    {
+      $group: 
+      {
+        _id :"$city",
+        accumulated-city: {
+          $sum:1
+          }
+      }
+    }
+  ]
+);
+
+$sum: 1 = sum+1
+$sum:5 = sum+5
+MongoShell should be used for enterprose level
+
+Do not use compassor any UI 
+
+SORT:
+$sort:1 -- descending
+
+UNWIND();
+$unwind method unwinds the array and displays as separate document
+{
+  _id:1,
+  product : "Apple Mobile",
+  color : ['Green', 'Blue', 'Red']
+}
+db.collection.aggregate([$unwind:'$color']);
+{
+  _id:1,
+  product : "Apple Mobile",
+  color : 'Green'
+}
+{
+  _id:1,
+  product : "Apple Mobile",
+  color : 'Blue'
+}
+{
+  _id:1,
+  product : "Apple Mobile",
+  color : 'Red'
+}
+
+
+GEONEAR:
+$geoNear -- specifies the nearest target.
+
+REDACT:
+$redact() - restrict the access
+[
+  {
+    $redact :{
+      $cond : {
+        if : {
+          $eq: ["city", 'Combsstad'],
+        },
+        then: "$$DESCEND",
+        else: "$$PRUNE",
+      }
+    }
+  }
+]
+
+LOOKUP:
+$lookup combines two collection (similar to join table)
+
+
+CAPPED COLLECTION:
+db.createCollection('cappedCollectionName', {capped:true, size:100, max:3});
+db.cappedCollectionName.isCapped();
+db.runCommand({'convertToCapped':"ordercollection", size:500, max:5});
+
+GRID FS -- FS CHUNKS AND FS FILES 
+used for videos more than 16mb
+chunk size is 255kb
+
+SECONDARY NODES -- 
+if primary server is down , the secondary server will save the day from customer.
+there can be 50 secondary nodes (servers)
+
+
+
+
+
 
 
 

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MongoDB Crud Application</title>
+</head>
+<body>
+    <ul>
+        <% data.forEach(function(item) { %> <!-- Fixed the syntax for .forEach -->
+            <li>
+                <%= item.name %> - <%= item.email %>
+                <a href="/edit/<%= item._id %>">Edit</a>
+                <a href="/update/<%= item._id %>">Update</a>
+                <a href="/delete/<%= item._id %>">Delete</a>
+            </li>
+        <% }); %> <!-- Closed the loop properly -->
+    </ul>
+    <a href="/create">Create New User</a>
+</body>
+</html>
